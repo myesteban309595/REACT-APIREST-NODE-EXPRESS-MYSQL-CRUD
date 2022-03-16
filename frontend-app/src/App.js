@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Fragment, useState} from "react"; //& fragmen me permite hacer varios retornos
+import Navbar from "./components/Navbar";
+import BookList from "./components/listaLibros";
 
 function App() {
+
+  //^ ======  vamos a crear el listado de los libros =========
+
+  const [books, setBooks] =useState([])
+
+  //^ ======  maquetacion de las tablas y titulos  ===========
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+
+      <Navbar brand="Biblioteca practica React Marlon"/>
+      <div className="container">
+        <div className="row">
+          <div className="col-7">
+
+            <h2 style={{textAlign: 'center'}}>Lista de Libros</h2>
+            <BookList/>
+
+          </div>
+          <div className="col-5">
+            <h2 style={{textAlign: 'center'}}>Formulario de Libros</h2>
+          </div>
+        </div>
+      </div>
+
+    </Fragment>
   );
 }
 

@@ -5,5 +5,15 @@
     "express": "^4.17.3",
     "express-myconnection": "^1.0.4",
     "mysql": "^2.18.1"
-  }
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
