@@ -1,7 +1,14 @@
+
+/* 
+   cors nos permite hacer las consultos desde nuestro cliente react al servidor, hace una pre consulta para ver si el servidor
+   deja hacer la consulta atravez de las peticiones http a nuestro cliente
+*/ 
+
 const express = require('express')
 const mysql = require('mysql')
 const colors = require('colors')
 const myConnection = require('express-myconnection')
+const cors = require('cors');
 
 
 const app = express()
@@ -25,6 +32,7 @@ const dbOptions = {
 
 app.use(myConnection(mysql, dbOptions, 'single'))
 app.use(express.json())
+app.use(cors()) //& lo ponemos como un middleware
 
 //^ ==============     routes    =======================
 
