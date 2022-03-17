@@ -1,12 +1,13 @@
 import React,{Fragment, useState, useEffect} from "react"; //& fragmen me permite hacer varios retornos
 import Navbar from "./components/Navbar";
 import BookList from "./components/listaLibros";
+import Form from "./components/bookForm";
 
 function App() {
 
   //^ ======  vamos a crear el listado de los libros =========
 
-  const [boooks, setBooks] =useState([])
+  const [boooks, setBooks] =useState([])  //& en este estado se pone la lista y lo comunicamos con el comonente en listalibros y los listamos por iteracion
 
   useEffect(() => { //& cuando se ejecute el useefect el metodo de entrada haga una consulta de los libros en la BD y me los ponga en la lista
 
@@ -20,7 +21,6 @@ function App() {
     getBooks () ;
 
   }, [])
-
 
 
   //^ ======  maquetacion de las tablas y titulos  ===========
@@ -38,6 +38,7 @@ function App() {
           </div>
           <div className="col-5">
             <h2 style={{textAlign: 'center'}}>Formulario de Libros</h2>
+            <Form/>
           </div>
         </div>
       </div>

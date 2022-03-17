@@ -20,7 +20,7 @@ const BookList = ({boooks}) => {
                 <th>{book.id}</th>
                 <th>{book.titulo}</th>
                 <th>{book.autor}</th>
-                <th>{book.edicion}</th>
+                <th style={{textAlign: 'center'}}>{book.edicion}</th>
                 </tr>
 
               ))}
