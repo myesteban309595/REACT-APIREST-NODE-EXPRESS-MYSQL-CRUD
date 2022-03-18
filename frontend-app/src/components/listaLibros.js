@@ -1,8 +1,8 @@
 import React from "react";
 
-const BookList = ({boooks, setlistUpdate}) => {
+const BookList = ({book, boooks, setlistUpdate}) => {
 
-    //! funcion para borrar de la base de datos con un boton ejecutando una query
+    //!       funcion para borrar de la base de datos con un boton ejecutando una query
 
     const handleDelete = id =>{
 
@@ -14,6 +14,36 @@ const BookList = ({boooks, setlistUpdate}) => {
         fetch('http://localhost:3000/api/'+id , requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
         .then (res => res.text())
         .then (res => console.log(res))
+
+        setlistUpdate(true) //& cuando ejecute ponlo en true y actualiza
+    }
+
+    //todo       funcion para actualizar un libro
+
+    let {titulo, autor, edicion} = book
+
+    const handleUpdate = id =>{
+
+        edicion = parseInt(edicion, 10) // convertimos este string a entero
+
+        //? VALIDACION DE LOS DATOS PARA VERIFICAR QUE TODAS LAS CASILLAS SE DILIGENCIEN
+
+        if(titulo === '' || autor === '' || edicion <= 0)
+        {
+            alert('todos los campos son obligatorios')
+            return
+        }
+
+        const requestInit = {
+            
+                method : 'PUT',
+                headers : {'Content-Type': 'application/json'},
+                body: JSON.stringify(book) //& se convierte a json el formato
+            }
+    
+            fetch('http://localhost:3000/api'+ id, requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
+            .then (res => res.text())
+            .then (res => console.log(res))
 
         setlistUpdate(true) //& cuando ejecute ponlo en true y actualiza
     }
@@ -42,6 +72,11 @@ const BookList = ({boooks, setlistUpdate}) => {
                 <td>
                     <div className="mb-3">
                         <button onClick={ () => handleDelete(book.id) } className="btn btn-danger">Delete</button>
+                    </div>
+                </td>
+                <td>
+                    <div className="mb-3">
+                        <button onClick={ () => handleUpdate(book.id) } className="btn btn-success">UpDate</button>
                     </div>
                 </td>
     

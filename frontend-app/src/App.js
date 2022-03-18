@@ -48,7 +48,7 @@ function App() {
           <div className="col-7">
 
             <h2 style={{textAlign: 'center'}}>Lista de Libros</h2>
-            <BookList boooks = {boooks} listUpdated = {listUpdated} setlistUpdate = {setlistUpdate} />
+            <BookList book = {book} setBook={setBook} boooks = {boooks} setlistUpdate = {setlistUpdate} />
 
           </div>
           <div className="col-5">
