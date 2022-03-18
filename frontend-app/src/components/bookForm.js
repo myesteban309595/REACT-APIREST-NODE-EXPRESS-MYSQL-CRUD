@@ -47,7 +47,7 @@ const Form = ({book,setBook}) => {
             body: JSON.stringify(book) //& se convierte a json el formato
         }
 
-        fetch('http://localhost:3000/api', requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
+        fetch('http://localhost:3001/api', requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
         .then (res => res.text())
         .then (res => console.log(res)) //? visualizamos la consulta por consola
 

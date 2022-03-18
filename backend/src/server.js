@@ -15,7 +15,7 @@ const app = express()
 
 //^ =========   configuracion del puerto   ===========
 
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 3001)
 
 //^ ===============    DATA BASE   ===================
 //&& se debe crear manualment la base de datos.

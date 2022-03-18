@@ -26,7 +26,7 @@ function App() {
 
     const getBooks = ()=> {
 
-      fetch('http://localhost:3000/api')  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
+      fetch('http://localhost:3001/api')  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
        .then (res => res.json())
        .then (res => setBooks(res)) //? visualizamos la consulta por consola
     }
@@ -38,7 +38,7 @@ function App() {
   }, [listUpdated]) //^ se lo pondre al useeffect para cuando se actualice este estado avisa que se actualizo alguna cosa y ejecuta y carga de nuevo los libros enseguida
 
 
-  //^ ======  maquetacion de las tablas y titulos  ===========
+  //^ ========  maquetacion de las tablas y titulos  ===========
   return (
     <Fragment>
 
@@ -48,7 +48,7 @@ function App() {
           <div className="col-7">
 
             <h2 style={{textAlign: 'center'}}>Lista de Libros</h2>
-            <BookList book = {book} setBook={setBook} boooks = {boooks} setlistUpdate = {setlistUpdate} />
+            <BookList book={book} setBook={setBook} boooks={boooks} setlistUpdate={setlistUpdate} />
 
           </div>
           <div className="col-5">

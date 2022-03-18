@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookList = ({book, boooks, setlistUpdate}) => {
+const BookList = ({book, setBook, boooks, setlistUpdate}) => {
 
     //!       funcion para borrar de la base de datos con un boton ejecutando una query
 
@@ -11,7 +11,7 @@ const BookList = ({book, boooks, setlistUpdate}) => {
             method : 'DELETE'
         }
 
-        fetch('http://localhost:3000/api/'+id , requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
+        fetch('http://localhost:3001/api/'+id , requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
         .then (res => res.text())
         .then (res => console.log(res))
 
@@ -24,7 +24,7 @@ const BookList = ({book, boooks, setlistUpdate}) => {
 
     const handleUpdate = id =>{
 
-        edicion = parseInt(edicion, 10) // convertimos este string a entero
+        edicion = parseInt(edicion, 10) //^ convertimos este string a entero
 
         //? VALIDACION DE LOS DATOS PARA VERIFICAR QUE TODAS LAS CASILLAS SE DILIGENCIEN
 
@@ -41,9 +41,16 @@ const BookList = ({book, boooks, setlistUpdate}) => {
                 body: JSON.stringify(book) //& se convierte a json el formato
             }
     
-            fetch('http://localhost:3000/api'+ id, requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
+            fetch('http://localhost:3001/api/'+ id, requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
             .then (res => res.text())
             .then (res => console.log(res))
+
+            setBook({  //& esto permite setear el form para que queden automaticamente vacios
+
+                titulo: '', //& si en value ponemos {titulo} seteara en blanco. si ponemos n value como string aparecera en el form
+                autor: '',
+                edicion: 0
+            })
 
         setlistUpdate(true) //& cuando ejecute ponlo en true y actualiza
     }
