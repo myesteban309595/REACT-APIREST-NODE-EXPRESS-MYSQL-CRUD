@@ -20,6 +20,8 @@ function App() {
 
   const [boooks, setBooks] =useState([])  //& en este estado se pone la lista y lo comunicamos con el comonente en listalibros y los listamos por iteracion
 
+  const [listUpdated, setlistUpdate] = useState([false]) //^ esto es para cada que se ejecute un CRUD, se refesque las tablas autoaticamente
+
   useEffect(() => { //& cuando se ejecute el useefect el metodo de entrada haga una consulta de los libros en la BD y me los ponga en la lista
 
     const getBooks = ()=> {
@@ -31,7 +33,9 @@ function App() {
 
     getBooks () ;
 
-  }, [])
+    setlistUpdate(false)  //& listupdate es el estado ... va el endpoint lo pone el true, luego vuelve aqui y lo devuelve a false apra que no se quede actualizando
+
+  }, [listUpdated]) //^ se lo pondre al useeffect para cuando se actualice este estado avisa que se actualizo alguna cosa y ejecuta y carga de nuevo los libros enseguida
 
 
   //^ ======  maquetacion de las tablas y titulos  ===========
@@ -44,7 +48,7 @@ function App() {
           <div className="col-7">
 
             <h2 style={{textAlign: 'center'}}>Lista de Libros</h2>
-            <BookList boooks = {boooks} />
+            <BookList boooks = {boooks} listUpdated = {listUpdated} setlistUpdate = {setlistUpdate} />
 
           </div>
           <div className="col-5">

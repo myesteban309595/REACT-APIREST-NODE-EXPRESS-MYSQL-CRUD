@@ -48,12 +48,12 @@ const Form = ({book,setBook}) => {
         }
 
         fetch('http://localhost:3000/api', requestInit)  //~ recibimos como primer parametro la url con la cual haremos la peticion con la query la tomamos del request.html
-        .then (res => res.json())
+        .then (res => res.text())
         .then (res => console.log(res)) //? visualizamos la consulta por consola
 
         setBook({  //& esto permite setear el form para que queden automaticamente vacios
 
-            titulo: '',
+            titulo: '', //& si en value ponemos {titulo} seteara en blanco. si ponemos n value como string aparecera en el form
             autor: '',
             edicion: 0
         })
@@ -68,15 +68,15 @@ const Form = ({book,setBook}) => {
 
             <div className="mb-3">
                 <label htmlFor = "titulo" className="form-label">Titulo</label>
-                <input name = "titulo" onChange={handleChange}  type="text" id= "titulo" className="form-control"/>
+                <input value = {titulo} name = "titulo" onChange={handleChange}  type="text" id= "titulo" className="form-control"/>
             </div>
             <div className="mb-3">
                 <label htmlFor = "Autor" className="form-label">Autor</label>
-                <input name = "autor" onChange={handleChange} type="text" id= "autor" className="form-control"/>
+                <input value = {autor} name = "autor" onChange={handleChange} type="text" id= "autor" className="form-control"/>
             </div>
             <div className="mb-3">
                 <label htmlFor = "Edicion" className="form-label">Edicion</label>
-                <input name = "edicion" onChange={handleChange} type="number" id= "edicion" className="form-control"/>
+                <input value = {edicion} name = "edicion" onChange={handleChange} type="number" id= "edicion" className="form-control"/>
             </div>
 
             <button type= "submit" className=" btn btn-primary">POST</button>
