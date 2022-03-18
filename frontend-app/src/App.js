@@ -5,6 +5,17 @@ import Form from "./components/bookForm";
 
 function App() {
 
+  //todo ****************************************    parte del formulario    *******************************************************
+
+  const [book, setBook] = useState({
+       
+    titulo: '',
+    autor: '',
+    edicion: 0
+
+  })
+
+  //todo ****************************************    parte de la lista    *******************************************************
   //^ ======  vamos a crear el listado de los libros =========
 
   const [boooks, setBooks] =useState([])  //& en este estado se pone la lista y lo comunicamos con el comonente en listalibros y los listamos por iteracion
@@ -38,7 +49,8 @@ function App() {
           </div>
           <div className="col-5">
             <h2 style={{textAlign: 'center'}}>Formulario de Libros</h2>
-            <Form/>
+            <Form book = {book} setBook = {setBook}/>
+
           </div>
         </div>
       </div>
